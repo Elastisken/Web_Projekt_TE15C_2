@@ -7,5 +7,7 @@ namespace Web_Projekt_TE15C_2.Models
 {
     public class Articles
     {
+        public int ID { get; set; }
+
     }
 }
