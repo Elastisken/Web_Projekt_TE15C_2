@@ -29,5 +29,7 @@ namespace Web_Projekt_TE15C_2.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<Web_Projekt_TE15C_2.Models.Articles> Articles { get; set; }
     }
 }
