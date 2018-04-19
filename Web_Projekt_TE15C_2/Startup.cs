@@ -15,6 +15,7 @@ namespace Web_Projekt_TE15C_2
             ConfigureAuth(app);
              CreateRoles();
              CreateAdmin();
+            CreateContentCreator();
         }
 
         private void CreateRoles()
@@ -36,6 +37,11 @@ namespace Web_Projekt_TE15C_2
               roleManager.Create(role);
               }
             }
+
+        private void CreateContentCreator()
+        {
+
+        }
 
     private void CreateAdmin()
     {
