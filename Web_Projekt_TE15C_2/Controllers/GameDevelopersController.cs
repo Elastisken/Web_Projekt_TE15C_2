@@ -17,12 +17,12 @@ namespace Web_Projekt_TE15C_2.Controllers
         [AllowAnonymous]
         public ActionResult Index(string search)
         {
-            var Developers = db.Developers.Include(p => p.Category);
+            var GameDevelopers = db.GameDevelopers.Include(p => p.Category);
             if (!string.IsNullOrEmpty(search))
             {
-                Developers = Developers.Where(p => p.Name.Contains(search));
+                GameDevelopers = GameDevelopers.Where(p => p.Name.Contains(search));
             }
-            return View(Developers.ToList());
+            return View(GameDevelopers.ToList());
         }
 
         [Authorize]
@@ -43,7 +43,6 @@ namespace Web_Projekt_TE15C_2.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.CategoryID = new Selectlist(db.Categories, "ID", "Name");
             return View();
         }
 
@@ -53,9 +52,6 @@ namespace Web_Projekt_TE15C_2.Controllers
         {
             if (ModelState.IsValid)
             {
-                WebImage webImage = new WebImage(file.InputStream);
-                webImage.Save("~/Content/Images/" + file.FileName);
-                Developers.ImageFile = file.FileName;
                 db.GamesDevelopers.Add(gameDevelopers);
                 db.SaveChanges();
                 return RedirectToAction("Index");
