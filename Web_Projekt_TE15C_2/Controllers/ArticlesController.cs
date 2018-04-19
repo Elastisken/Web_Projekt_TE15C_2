@@ -15,10 +15,17 @@ namespace Web_Projekt_TE15C_2.Controllers
         private WebContext db = new WebContext();
 
         // GET: Articles
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult Index(string search)
         {
-            return View(db.Articles.ToList());
+            var News = db.News.Include(p => p.Category);
+            if (!string.IsNullOrEmpty(search))
+            {
+                News = News.Where(p => p.Name.Contains(search));
+            }
+            return View(News.ToList());
         }
+
 
         // GET: Articles/Details/5
         public ActionResult Details(int? id)

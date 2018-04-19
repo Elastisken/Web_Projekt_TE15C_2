@@ -14,13 +14,18 @@ namespace Web_Projekt_TE15C_2.Controllers
     {
         private WebContext db = new WebContext();
 
-        // GET: GameDevelopers
-        public ActionResult Index()
+        [AllowAnonymous]
+        public ActionResult Index(string search)
         {
-            return View(db.GamesDevelopers.ToList());
+            var Developers = db.Developers.Include(p => p.Category);
+            if (!string.IsNullOrEmpty(search))
+            {
+                Developers = Developers.Where(p => p.Name.Contains(search));
+            }
+            return View(Developers.ToList());
         }
 
-        // GET: GameDevelopers/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,21 +40,22 @@ namespace Web_Projekt_TE15C_2.Controllers
             return View(gameDevelopers);
         }
 
-        // GET: GameDevelopers/Create
+        [Authorize]
         public ActionResult Create()
         {
+            ViewBag.CategoryID = new Selectlist(db.Categories, "ID", "Name");
             return View();
         }
 
-        // POST: GameDevelopers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name")] GameDevelopers gameDevelopers)
+        public ActionResult Create([Bind(Include = "ID,Name,Established,About")] GameDevelopers gameDevelopers, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                WebImage webImage = new WebImage(file.InputStream);
+                webImage.Save("~/Content/Images/" + file.FileName);
+                Developers.ImageFile = file.FileName;
                 db.GamesDevelopers.Add(gameDevelopers);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -58,7 +64,7 @@ namespace Web_Projekt_TE15C_2.Controllers
             return View(gameDevelopers);
         }
 
-        // GET: GameDevelopers/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,9 +79,7 @@ namespace Web_Projekt_TE15C_2.Controllers
             return View(gameDevelopers);
         }
 
-        // POST: GameDevelopers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name")] GameDevelopers gameDevelopers)
@@ -89,7 +93,7 @@ namespace Web_Projekt_TE15C_2.Controllers
             return View(gameDevelopers);
         }
 
-        // GET: GameDevelopers/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +108,6 @@ namespace Web_Projekt_TE15C_2.Controllers
             return View(gameDevelopers);
         }
 
-        // POST: GameDevelopers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
