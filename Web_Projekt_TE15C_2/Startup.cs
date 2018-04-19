@@ -20,7 +20,8 @@ namespace Web_Projekt_TE15C_2
         private void CreateRoles()
         {
             ApplicationDbContext context = new ApplicationDbContext();
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
 
             if (!roleManager.RoleExists("Customer"))
                {
