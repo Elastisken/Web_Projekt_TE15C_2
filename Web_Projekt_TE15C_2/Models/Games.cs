@@ -8,6 +8,7 @@ namespace Web_Projekt_TE15C_2.Models
 {
     public class Games
     {
+        [Required]
         public int ID { get; set; }
         public string Title { get; set; }
         public DateTime ReleaseDate { get; set; }
