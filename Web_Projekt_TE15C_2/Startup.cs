@@ -30,12 +30,7 @@ namespace Web_Projekt_TE15C_2
               role.Name = "Customer";
               roleManager.Create(role);
                }
-            if (!roleManager.RoleExists("Creator"))
-            {
-                var role = new IdentityRole();
-                role.Name = "Creator";
-                roleManager.Create(role);
-            }
+
             if (!roleManager.RoleExists("Admin"))
               {
               var role = new IdentityRole();
