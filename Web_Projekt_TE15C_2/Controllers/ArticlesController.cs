@@ -18,10 +18,10 @@ namespace Web_Projekt_TE15C_2.Controllers
         [AllowAnonymous]
         public ActionResult Index(string search)
         {
-            var News = db.News.Include(p => p.Category);
+            var News = db.Articles.Include(p => p.Description);
             if (!string.IsNullOrEmpty(search))
             {
-                News = News.Where(p => p.Name.Contains(search));
+                News = News.Where(p => p.Title.Contains(search));
             }
             return View(News.ToList());
         }

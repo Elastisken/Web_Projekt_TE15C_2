@@ -17,10 +17,10 @@ namespace Web_Projekt_TE15C_2.Controllers
         [AllowAnonymous]
         public ActionResult Index(string search)
         {
-            var GameDevelopers = db.GamesDevelopers.Include(p => p.GamesDevelopers);
+            var GameDevelopers = db.GamesDevelopers.Include(p => p.Games);
             if (!string.IsNullOrEmpty(search))
             {
-                GameDevelopers = GamesDevelopers.Where(p => p.Name.Contains(search));
+                GameDevelopers = GameDevelopers.Where(p => p.Name.Contains(search));
             }
             return View(GameDevelopers.ToList());
         }
