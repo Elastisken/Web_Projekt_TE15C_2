@@ -7,15 +7,16 @@
 <head>
     <meta charset="utf-8">
     <title>IGEN | Home</title>
-    <link rel="icon" type="image/png" href="images/tabicon.png">
-    @Styles.Render("~/Content/site.css")
+    <link rel="icon" type="image/png" href="~/Content/img/tabicon.png">
+    @Styles.Render("~/Content/Site.css")
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Archivo+Narrow" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
 </head>
 <body>
     <div id="container">
-        <a id="a1" href="index.html"><img id="logo" src="images/IGEN_red.png" alt="logo" /></a>
+        <a id="a1" href="index.html"><img id="logo" src="~/Content/img/IGEN_red.png" alt="logo" /></a>
         <a id="a2" href="index.html"><p><i class="fa fa-home" aria-hidden="true"></i>Home</p></a>
         <a id="a3" href="magazine.html"><p><i class="fa fa-book" aria-hidden="true"></i>The Magazine</p></a>
         <a id="a33" href="#"><p>More<i class="fa fa-angle-double-down" aria-hidden="true"></i></p></a>
@@ -77,19 +78,20 @@
     </div>
     <div id="socialmedia">
         <p>Visit us on social media</p>
-        <a id="spa1" href="https://facebook.com"><img src="images/facebook.png" alt="facebook" /></a>
-        <a id="spa2" href="https://twitter.com"><img src="images/twitter.png" alt="facebook" /></a>
-        <a id="spa3" href="https://instagram.com"><img src="images/instagram.png" alt="facebook" /></a>
-        <a id="spa4" href="https://youtube.com"><img src="images/youtube.png" alt="facebook" /></a>
+        <a id="spa1" href="https://facebook.com"><img src="~/Content/img/facebook.png" alt="facebook" /></a>
+        <a id="spa2" href="https://twitter.com"><img src="~/Content/img/twitter.png" alt="facebook" /></a>
+        <a id="spa3" href="https://instagram.com"><img src="~/Content/img/instagram.png" alt="facebook" /></a>
+        <a id="spa4" href="https://youtube.com"><img src="~/Content/img/youtube.png" alt="facebook" /></a>
     </div>
     <div id="footer">
-        <img id="footerlogo" src="images/IGEN_red_text.png" alt="logo" />
+        <img id="footerlogo" src="~/Content/img//IGEN_red_text.png" alt="logo" />
         <p id="fp1"><a href="index.html">Home</a> <span class="whitedot">•</span> <a href="tos.html">Terms of Use</a> <span class="whitedot">•</span> <a href="contact.html">Contact Us</a></p>
         <p id="fp2"><a href="about.html">About Us</a> <span class="whitedot">•</span> <a href="copyright.html">Copyright</a> <span class="whitedot">•</span> <a href="tip.html">Tip Us</a></p>
         <p id="fp3">© 2018 - Ingenious Gamer & Electronics News</p>
     </div>
 
-    <script src="https://code.jquery.com/color/jquery.color-2.1.2.min.js"></script>
-    <script src="script.js"></script>
+    
+    <script src="~/Scripts/NavScripts.js"></script>
+    <script src="~/Scripts/ColorChangerCards.js"></script>
 </body>
 </html>
