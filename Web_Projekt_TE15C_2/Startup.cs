@@ -46,7 +46,20 @@ namespace Web_Projekt_TE15C_2
 
         private void CreateContentCreator()
         {
-
+            ApplicationDbContext context = new ApplicationDbContext();
+            var userManager =
+                new UserManager<ApplicationUser>(
+                    new UserStore<ApplicationUser>(context));
+            if(userManager.FindByName("ContentCreator") == null)
+            {
+                var user = new ApplicationUser();
+                user.Email = "creator@creator.com";
+                user.UserName = "ContentCreator";
+                string password = "Password2!";
+                userManager.Create(user, password);
+                userManager.SetLockoutEnabled(user.Id, false);
+                userManager.AddToRoleAsync(user.Id, "Creator");
+            }
         }
 
     private void CreateAdmin()
