@@ -140,6 +140,7 @@ a:hover {
     width: 150px;
     height: 200px;
     background-color: #DC143C;
+    z-index:2;
 }
 
 h1 {
