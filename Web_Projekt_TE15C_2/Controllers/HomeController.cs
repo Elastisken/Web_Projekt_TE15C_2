@@ -4,10 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Web_Projekt_TE15C_2.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
-    {
+    {   
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -20,6 +23,7 @@ namespace Web_Projekt_TE15C_2.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
