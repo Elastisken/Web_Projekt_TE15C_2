@@ -243,8 +243,8 @@
     <Content Include="Scripts\NavScripts.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Views\Account\login1.html" />
     <None Include="Views\Account\login.cshtml" />
-    <Content Include="Views\Account\login.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
